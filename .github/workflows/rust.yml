@@ -52,6 +52,6 @@ jobs:
           merge-multiple: true
           path: artifacts
       - name: Create GitHub Release
-        run: gh release create "build-${{ github.run_id }}" artifacts/* --generate-notes
+        run: gh release create "build-${{ github.run_id }}" artifacts/* --generate-notes -R ${{ github.repository }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
