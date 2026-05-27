@@ -1,8 +1,9 @@
 [package]
 name = "umni"
+authors = ["Code Slasher Incorporation"]
 version = "0.2.0"
 edition = "2024"
-license = "GPL"
+license = "GPL-2.0+"
 
 [dependencies]
 rand = "0.10"
