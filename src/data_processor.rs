@@ -1,9 +1,8 @@
+use serde::{Deserialize, Serialize};
 use std::{
     collections::HashMap,
     hash::{DefaultHasher, Hash, Hasher},
 };
-
-use serde::{Deserialize, Serialize};
 
 pub type SymbolicMap = HashMap<char, Vec<char>>;
 

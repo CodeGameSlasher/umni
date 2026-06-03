@@ -25,19 +25,16 @@ fn main() {
 
     let mut original_content = String::new();
     if data_path != cache_path {
-        original_content = String::from_utf8(std::fs::read(&data_path).unwrap_or_else(|e| {
+        original_content = std::fs::read_to_string(&data_path).unwrap_or_else(|e| {
             panic!(
                 r#"Error {} while reading "{}" file"#,
                 e,
                 data_path.to_str().unwrap_or("Undefined")
             );
-        }))
-        .unwrap_or_else(|e| {
-            panic!("Can't parse content due {} error", e);
         });
     }
 
-    let _ = std::fs::read(&cache_path).map(|content| match String::from_utf8(content) {
+    match std::fs::read_to_string(&cache_path) {
         Ok(content) => {
             values = serde_json::from_str::<SymbolicData>(&content).unwrap_or_default();
 
@@ -53,7 +50,7 @@ fn main() {
                 e
             );
         }
-    });
+    };
 
     if values.data.is_empty() && !original_content.trim().is_empty() {
         values = SymbolicData::process_data(&original_content);

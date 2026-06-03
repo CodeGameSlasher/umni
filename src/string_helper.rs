@@ -2,7 +2,7 @@ pub trait Title {
     fn title(&self) -> String;
 }
 
-impl Title for String {
+impl Title for str {
     fn title(&self) -> String {
         let mut chars = self.chars();
         match chars.next() {
